@@ -1,15 +1,20 @@
 import './App.css';
 import Note from './components/note/note';
 import { Notes } from './components/note/data';
+import AddNote from './components/add-note/add-note';
+import { useState } from 'react';
 
 function App() {
+
+  const [notes, setNotes] = useState(Notes);
   return (
     <div className="App">
       <h2>Notes App</h2>
+      <AddNote></AddNote>
       <div>
         {
-          Notes.map(
-            note=> <Note priority={note.priority} text={note.text}></Note>
+          notes.map(
+            note=> <Note key={note.id} priority={note.priority} text={note.text}></Note>
           )
         }
       </div>

@@ -1,0 +1,8 @@
+.add-note input{
+    line-height: 2rem;
+    width: 80%;  
+}
+.add-note button{
+    line-height: 2rem;
+    width: 15%;  
+}

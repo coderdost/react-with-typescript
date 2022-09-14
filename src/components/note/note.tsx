@@ -1,4 +1,4 @@
-import './notes.css'
+import './note.css'
 
 import {NoteProps} from './note-type';
 
