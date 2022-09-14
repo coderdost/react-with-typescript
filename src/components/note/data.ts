@@ -1,4 +1,4 @@
-import {NoteProps} from './notes-type';
+import {NoteProps} from './note-type';
 
 export const Notes:NoteProps[] = [
     {

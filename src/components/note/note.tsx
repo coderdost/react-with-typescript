@@ -1,6 +1,6 @@
 import './notes.css'
 
-import {NoteProps} from './notes-type';
+import {NoteProps} from './note-type';
 
 function Note(props: NoteProps){
     return (
