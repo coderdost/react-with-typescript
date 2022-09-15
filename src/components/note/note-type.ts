@@ -1,10 +1,12 @@
+export type Priority = 'high' | 'medium' | 'low';
+
 export type NoteProps = {
     text: string,
-    priority? : 'high' | 'medium' | 'low'
+    priority? : Priority
 }
 
 export type NoteType = {
     id: string,
     text: string,
-    priority : 'high' | 'medium' | 'low'
+    priority : Priority
 }
