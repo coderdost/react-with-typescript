@@ -12,6 +12,16 @@ function App() {
   const addNote = (note:NoteType)=>{
     setNotes([note,...notes])
   }
+  const editNote = (id:string)=>{
+    console.log('edit',id);
+  }
+
+  const deleteNote = (id:string)=>{
+    const index = notes.findIndex(note=>note.id===id);
+    let editedNotes = [...notes]
+    editedNotes.splice(index,1);
+    setNotes(editedNotes);
+  }
   return (
     <div className="App">
       <h2>Notes App</h2>
@@ -19,7 +29,7 @@ function App() {
       <div>
         {
           notes.map(
-            note=> <Note key={note.id} priority={note.priority} text={note.text}></Note>
+            note=> <Note key={note.id} id={note.id} priority={note.priority} text={note.text} editNote={editNote} deleteNote={deleteNote}></Note>
           )
         }
       </div>
