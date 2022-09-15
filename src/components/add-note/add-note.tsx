@@ -22,6 +22,8 @@ function AddNote(props: AddNoteProps){
       priority,
       id: uuidv4()
     })
+    setText('')
+    setPriority('low')
   }
 
   const handleSelect = (e:React.ChangeEvent<HTMLSelectElement>)=>{
@@ -31,7 +33,7 @@ function AddNote(props: AddNoteProps){
   return(
     <div>
         <form className="add-note">
-            <input type="text" onChange={handleChange}/>
+            <input type="text" onChange={handleChange} value={text}/>
             <select onChange={handleSelect} value={priority}>
               <option value="high">High</option>
               <option value="medium">Medium</option>
