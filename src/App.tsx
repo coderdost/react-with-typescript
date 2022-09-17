@@ -4,9 +4,9 @@ import Home from './pages/home/home';
 import Switch from 'react-switch';
 import { FaSun, FaMoon } from 'react-icons/fa';
 import { useReducer, useState } from 'react';
-import { NoteType } from './components/note/note-type';
 import { StateContext, StateType } from './context/state/state';
 import { Notes } from './components/note/data';
+import { ADD_NOTE, DELETE_NOTE, SET_EDIT_MODE, SET_NOTE_FOR_EDIT, UPDATE_NOTE } from './actions';
 
 function App() {
   const [theme, setTheme] = useState('light');
@@ -15,20 +15,20 @@ function App() {
   const [state, dispatch] = useReducer(
     (state: StateType, action: { type: string; payload: any }) => {
       switch (action.type) {
-        case 'SET_EDIT_MODE':
+        case SET_EDIT_MODE:
           return { ...state, editMode: action.payload };
-        case 'SET_NOTE_FOR_EDIT':
+        case SET_NOTE_FOR_EDIT:
           return { ...state, noteToBeEdited: action.payload };
-        case 'ADD_NOTE':
+        case ADD_NOTE:
           return { ...state, notes: [action.payload, ...state.notes] };
-        case 'DELETE_NOTE':
+        case DELETE_NOTE:
           const index = state.notes.findIndex(
             (note) => note.id === action.payload
           );
           let editedNotes = [...state.notes];
           editedNotes.splice(index, 1);
           return { ...state, notes: editedNotes };
-        case 'UPDATE_NOTE':
+        case UPDATE_NOTE:
           const indexUpdated = state.notes.findIndex(
             (note) => note.id === action.payload.id
           );
@@ -49,7 +49,6 @@ function App() {
     } else {
       setTheme('light');
     }
-    console.log(checked, check);
   };
 
   return (

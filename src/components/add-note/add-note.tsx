@@ -5,22 +5,19 @@ import { v4 as uuidv4 } from 'uuid';
 import Card from '../card/card';
 import { ThemeContext } from '../../context/theme/theme';
 import { StateContext } from '../../context/state/state';
+import { ADD_NOTE, UPDATE_NOTE, SET_EDIT_MODE } from '../../actions';
 
-type AddNoteProps = {
-  addNote: (note: NoteType) => void;
-  updateNote: (updatedNote: NoteType) => void;
-};
+type AddNoteProps = {};
 
 function AddNote(props: AddNoteProps) {
   const [text, setText] = useState('');
   const [priority, setPriority] = useState<Priority>('low');
   const theme = useContext(ThemeContext);
-  const {state,dispatch} = useContext(StateContext);
-  
+  const { state, dispatch } = useContext(StateContext);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);
   };
-
 
   const setNoteContent = (note: NoteType) => {
     setText(note.text);
@@ -37,16 +34,23 @@ function AddNote(props: AddNoteProps) {
     e.preventDefault();
     if (state.editMode) {
       state.noteToBeEdited &&
-        props.updateNote({
+        dispatch({
+          type: UPDATE_NOTE,
+          payload: {
+            text,
+            priority,
+            id: state.noteToBeEdited.id,
+          },
+        });
+      dispatch({ type: SET_EDIT_MODE, payload: false });
+    } else {
+      dispatch({
+        type: ADD_NOTE,
+        payload: {
           text,
           priority,
-          id: state.noteToBeEdited.id,
-        });
-    } else {
-      props.addNote({
-        text,
-        priority,
-        id: uuidv4(),
+          id: uuidv4(),
+        },
       });
     }
 
@@ -59,7 +63,7 @@ function AddNote(props: AddNoteProps) {
   };
 
   return (
-    <Card bgColor={theme==='dark'? '#333':'#ddd'} height="2" padding="1">
+    <Card bgColor={theme === 'dark' ? '#333' : '#ddd'} height="2" padding="1">
       <form className="add-note">
         <input type="text" onChange={handleChange} value={text} />
         <select onChange={handleSelect} value={priority}>
