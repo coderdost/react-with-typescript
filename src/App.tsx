@@ -6,7 +6,14 @@ import { FaSun, FaMoon } from 'react-icons/fa';
 import { useEffect, useReducer, useState } from 'react';
 import { StateContext, StateType } from './context/state/state';
 import { Notes } from './components/note/data';
-import { ADD_NOTE, DELETE_NOTE, INIT_NOTES, SET_EDIT_MODE, SET_NOTE_FOR_EDIT, UPDATE_NOTE } from './actions';
+import {
+  ADD_NOTE,
+  DELETE_NOTE,
+  INIT_NOTES,
+  SET_EDIT_MODE,
+  SET_NOTE_FOR_EDIT,
+  UPDATE_NOTE,
+} from './actions';
 import { getNotes } from './services/notes-service';
 
 function App() {
@@ -14,7 +21,7 @@ function App() {
   const [checked, setChecked] = useState(false);
 
   const [state, dispatch] = useReducer(
-     (state: StateType, action: { type: string; payload: any }) => {
+    (state: StateType, action: { type: string; payload: any }) => {
       switch (action.type) {
         case INIT_NOTES:
           return { ...state, notes: action.payload };
@@ -54,13 +61,13 @@ function App() {
     }
   };
 
-  useEffect(()=>{
-    async function initializeNotes(){
+  useEffect(() => {
+    async function initializeNotes() {
       const notes = await getNotes();
-      dispatch({type:INIT_NOTES, payload:notes})
+      dispatch({ type: INIT_NOTES, payload: notes });
     }
-    initializeNotes()
-  },[])
+    initializeNotes();
+  }, []);
 
   return (
     <StateContext.Provider value={{ state, dispatch }}>

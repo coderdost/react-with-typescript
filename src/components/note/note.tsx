@@ -13,22 +13,22 @@ type NoteProps = {
   id: string;
   text: string;
   priority?: Priority;
-  note: NoteType
+  note: NoteType;
 };
 
 function Note(props: NoteProps) {
   const theme = useContext(ThemeContext);
-  const {dispatch} = useContext(StateContext);
+  const { dispatch } = useContext(StateContext);
 
-  const editNote = (note:NoteType) => {
-    dispatch({type:SET_EDIT_MODE,payload:true});
-    dispatch({type:SET_NOTE_FOR_EDIT,payload:note});
+  const editNote = (note: NoteType) => {
+    dispatch({ type: SET_EDIT_MODE, payload: true });
+    dispatch({ type: SET_NOTE_FOR_EDIT, payload: note });
   };
 
-  const handleDelete = async()=>{
+  const handleDelete = async () => {
     console.log(await deleteNote(props.id));
     dispatch({ type: DELETE_NOTE, payload: props.id });
-  }
+  };
 
   return (
     <Card
@@ -44,9 +44,7 @@ function Note(props: NoteProps) {
         <div>{props.text}</div>
         <div className="right-corner">
           <FaEdit onClick={() => editNote(props.note)}></FaEdit>
-          <FaTrash
-            onClick={handleDelete}
-          ></FaTrash>
+          <FaTrash onClick={handleDelete}></FaTrash>
         </div>
       </>
     </Card>

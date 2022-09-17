@@ -7,7 +7,7 @@ import { StateContext } from '../../context/state/state';
 
 function Home() {
   const theme = useContext(ThemeContext);
-  const {state} = useContext(StateContext);
+  const { state } = useContext(StateContext);
 
   return (
     <div className={`home ${theme}`}>
