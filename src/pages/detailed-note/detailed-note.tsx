@@ -1,21 +1,17 @@
-import './home.css';
+import './detailed-note.css';
 import Note from '../../components/note/note';
-import AddNote from '../../components/add-note/add-note';
 import { useContext } from 'react';
 import { ThemeContext } from '../../context/theme/theme';
 import { StateContext } from '../../context/state/state';
 
-function Home() {
+function DetailedNote() {
   const theme = useContext(ThemeContext);
   const { state } = useContext(StateContext);
-
+  const note = state.notes[0];
   return (
-    <div className={`home ${theme}`}>
-      <h2>Notes App [{state.notes.length}]</h2>
-      <AddNote></AddNote>
+    <div className={`detailed-note ${theme}`}>
       <div>
-        {state.notes.map((note) => (
-          <Note
+          {note && <Note
             key={note.id}
             id={note.id}
             priority={note.priority}
@@ -23,12 +19,11 @@ function Home() {
             createdAt={note.createdAt}
             updatedAt={note.updatedAt}
             note={note}
-            height="3"
-          ></Note>
-        ))}
+            isDetailed={true}
+          ></Note>}
       </div>
     </div>
   );
 }
 
-export default Home;
+export default DetailedNote;

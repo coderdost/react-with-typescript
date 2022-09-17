@@ -16,6 +16,8 @@ type NoteProps = {
   createdAt: Date;
   updatedAt: Date;
   note: NoteType;
+  isDetailed?: boolean;
+  height?:string;
 };
 
 function Note(props: NoteProps) {
@@ -31,7 +33,8 @@ function Note(props: NoteProps) {
     console.log(await deleteNote(props.id));
     dispatch({ type: DELETE_NOTE, payload: props.id });
   };
-
+  
+  const optionalProps  = props.height ? {height:props.height}:{}
   return (
     <Card
       bgColor={
@@ -39,11 +42,11 @@ function Note(props: NoteProps) {
           ? props.priority && ColorDark[props.priority]
           : props.priority && ColorLight[props.priority]
       }
-      height="3"
       padding="1"
+      {...optionalProps}
     >
       <>
-        <div className='text'>{props.text}</div>
+        <div className={props.isDetailed?'':'text'}>{props.text}</div>
         <div className='left-corner date'>{props.updatedAt.toLocaleString()}</div>
         <div className="right-corner">
           <FaEdit onClick={() => editNote(props.note)}></FaEdit>

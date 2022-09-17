@@ -14,6 +14,7 @@ import {
   UPDATE_NOTE,
 } from './actions';
 import { getNotes } from './services/notes-service';
+import DetailedNote from './pages/detailed-note/detailed-note';
 
 function App() {
   const [theme, setTheme] = useState('light');
@@ -95,6 +96,7 @@ function App() {
           onHandleColor="#000"
         ></Switch>
         <Home></Home>
+        <DetailedNote></DetailedNote>
       </ThemeContext.Provider>
     </StateContext.Provider>
   );
