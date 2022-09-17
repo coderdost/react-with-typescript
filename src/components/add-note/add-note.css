@@ -1,8 +1,8 @@
-.add-note input{
-    line-height: 2rem;
+.add-note textarea{
     width: 60%; 
     border:0;
     padding: 0; 
+    vertical-align: bottom;
 }
 .add-note button{
     line-height: 2rem;

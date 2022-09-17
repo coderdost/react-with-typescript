@@ -39,11 +39,11 @@ function Note(props: NoteProps) {
           ? props.priority && ColorDark[props.priority]
           : props.priority && ColorLight[props.priority]
       }
-      height="2"
+      height="3"
       padding="1"
     >
       <>
-        <div>{props.text}</div>
+        <div className='text'>{props.text}</div>
         <div className='left-corner date'>{props.updatedAt.toLocaleString()}</div>
         <div className="right-corner">
           <FaEdit onClick={() => editNote(props.note)}></FaEdit>
