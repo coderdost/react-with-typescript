@@ -16,7 +16,9 @@
 }
 .text{
     white-space: pre-wrap;
-    overflow: hidden;
+}
+.text-hide{
+   overflow: hidden;
    text-overflow: ellipsis;
    display: -webkit-box;
    -webkit-line-clamp: 2; /* number of lines to show */

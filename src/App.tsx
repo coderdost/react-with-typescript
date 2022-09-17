@@ -15,7 +15,23 @@ import {
 } from './actions';
 import { getNotes } from './services/notes-service';
 import DetailedNote from './pages/detailed-note/detailed-note';
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  Link,
+} from "react-router-dom";
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home></Home>,
+  },
+  {
+    path: "/:id",
+    element: <DetailedNote></DetailedNote>,
+  },
+]);
 function App() {
   const [theme, setTheme] = useState('light');
   const [checked, setChecked] = useState(false);
@@ -95,8 +111,8 @@ function App() {
           offColor="#333"
           onHandleColor="#000"
         ></Switch>
-        <Home></Home>
-        <DetailedNote></DetailedNote>
+        {/* here we want router */}
+        <RouterProvider router={router} />
       </ThemeContext.Provider>
     </StateContext.Provider>
   );
