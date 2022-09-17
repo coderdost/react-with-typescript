@@ -1,3 +1,4 @@
+export const INIT_NOTES = 'INIT_NOTES';
 export const SET_EDIT_MODE = 'SET_EDIT_MODE';
 export const SET_NOTE_FOR_EDIT = 'SET_NOTE_FOR_EDIT';
 export const ADD_NOTE = 'ADD_NOTE';

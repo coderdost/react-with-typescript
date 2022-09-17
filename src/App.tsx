@@ -3,18 +3,21 @@ import { ThemeContext } from './context/theme/theme';
 import Home from './pages/home/home';
 import Switch from 'react-switch';
 import { FaSun, FaMoon } from 'react-icons/fa';
-import { useReducer, useState } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 import { StateContext, StateType } from './context/state/state';
 import { Notes } from './components/note/data';
-import { ADD_NOTE, DELETE_NOTE, SET_EDIT_MODE, SET_NOTE_FOR_EDIT, UPDATE_NOTE } from './actions';
+import { ADD_NOTE, DELETE_NOTE, INIT_NOTES, SET_EDIT_MODE, SET_NOTE_FOR_EDIT, UPDATE_NOTE } from './actions';
+import { getNotes } from './services/notes-service';
 
 function App() {
   const [theme, setTheme] = useState('light');
   const [checked, setChecked] = useState(false);
 
   const [state, dispatch] = useReducer(
-    (state: StateType, action: { type: string; payload: any }) => {
+     (state: StateType, action: { type: string; payload: any }) => {
       switch (action.type) {
+        case INIT_NOTES:
+          return { ...state, notes: action.payload };
         case SET_EDIT_MODE:
           return { ...state, editMode: action.payload };
         case SET_NOTE_FOR_EDIT:
@@ -39,7 +42,7 @@ function App() {
           return state;
       }
     },
-    { notes: Notes, editMode: false, noteToBeEdited: null }
+    { notes: [], editMode: false, noteToBeEdited: null }
   );
 
   const changeHandler = (check: boolean) => {
@@ -50,6 +53,14 @@ function App() {
       setTheme('light');
     }
   };
+
+  useEffect(()=>{
+    async function initializeNotes(){
+      const notes = await getNotes();
+      dispatch({type:INIT_NOTES, payload:notes})
+    }
+    initializeNotes()
+  },[])
 
   return (
     <StateContext.Provider value={{ state, dispatch }}>

@@ -6,6 +6,7 @@ import Card from '../card/card';
 import { ThemeContext } from '../../context/theme/theme';
 import { StateContext } from '../../context/state/state';
 import { ADD_NOTE, UPDATE_NOTE, SET_EDIT_MODE } from '../../actions';
+import { addNote, updateNote } from '../../services/notes-service';
 
 type AddNoteProps = {};
 
@@ -30,27 +31,35 @@ function AddNote(props: AddNoteProps) {
     }
   }, [state.noteToBeEdited, state.editMode]);
 
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const handleClick = async (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
     e.preventDefault();
-    if (state.editMode) {
-      state.noteToBeEdited &&
-        dispatch({
-          type: UPDATE_NOTE,
-          payload: {
-            text,
-            priority,
-            id: state.noteToBeEdited.id,
-          },
-        });
+    if (state.editMode && state.noteToBeEdited) {
+      const updatedNoteData = {
+        text,
+        priority,
+        id: state.noteToBeEdited.id,
+      };
+      const updatedNote = await updateNote(
+        state.noteToBeEdited.id,
+        updatedNoteData
+      );
+      dispatch({
+        type: UPDATE_NOTE,
+        payload: updatedNote,
+      });
       dispatch({ type: SET_EDIT_MODE, payload: false });
     } else {
+      const noteData = {
+        text,
+        priority,
+        id: uuidv4(),
+      };
+      const note = await addNote(noteData);
       dispatch({
         type: ADD_NOTE,
-        payload: {
-          text,
-          priority,
-          id: uuidv4(),
-        },
+        payload: note,
       });
     }
 
