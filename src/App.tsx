@@ -5,7 +5,6 @@ import Switch from 'react-switch';
 import { FaSun, FaMoon } from 'react-icons/fa';
 import { useEffect, useReducer, useState } from 'react';
 import { StateContext, StateType } from './context/state/state';
-import { Notes } from './components/note/data';
 import {
   ADD_NOTE,
   DELETE_NOTE,
@@ -43,7 +42,8 @@ function App() {
             (note) => note.id === action.payload.id
           );
           let editedNotesUpdated = [...state.notes];
-          editedNotesUpdated.splice(indexUpdated, 1, action.payload);
+          editedNotesUpdated.splice(indexUpdated, 1);
+          editedNotesUpdated.unshift(action.payload);
           return { ...state, notes: editedNotesUpdated };
         default:
           return state;

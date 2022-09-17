@@ -1,19 +1,25 @@
 {
   "notes": [
     {
-      "text": "This is note 5 ***",
+      "text": "note 1 (updated now)",
       "priority": "low",
-      "id": "5"
+      "id": "b31926f0-3ede-4c67-867d-aca9830ed8b0",
+      "createdAt": "2022-09-17T16:15:54.984Z",
+      "updatedAt": "2022-09-17T16:21:15.119Z"
     },
     {
-      "text": "test note ******",
+      "text": "note 2 (updated now)",
+      "priority": "low",
+      "id": "7f77e872-f7f8-4617-ab9d-8f32a46780fb",
+      "createdAt": "2022-09-17T16:15:59.545Z",
+      "updatedAt": "2022-09-17T18:08:23.343Z"
+    },
+    {
+      "text": "note 3 (updated)",
       "priority": "high",
-      "id": "d666326a-a06f-44c8-8dad-b6fba11dbb70"
-    },
-    {
-      "text": "new note ****************",
-      "priority": "medium",
-      "id": "1936edf9-bfbb-4c58-a3fa-3b2f8c94ae54"
+      "id": "78486737-f03f-4da1-a40c-460149e7cf87",
+      "createdAt": "2022-09-17T16:16:02.765Z",
+      "updatedAt": "2022-09-17T16:18:04.640Z"
     }
   ]
 }

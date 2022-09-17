@@ -20,6 +20,8 @@ function Home() {
             id={note.id}
             priority={note.priority}
             text={note.text}
+            createdAt={note.createdAt}
+            updatedAt={note.updatedAt}
             note={note}
           ></Note>
         ))}

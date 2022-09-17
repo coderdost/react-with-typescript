@@ -3,7 +3,9 @@ export type Priority = 'high' | 'medium' | 'low';
 export type NoteType = {
     id: string,
     text: string,
-    priority : Priority
+    priority : Priority,
+    createdAt : Date,
+    updatedAt : Date
 }
 
 export enum ColorLight{

@@ -13,6 +13,8 @@ type NoteProps = {
   id: string;
   text: string;
   priority?: Priority;
+  createdAt: Date;
+  updatedAt: Date;
   note: NoteType;
 };
 
@@ -42,6 +44,7 @@ function Note(props: NoteProps) {
     >
       <>
         <div>{props.text}</div>
+        <div className='left-corner date'>{props.updatedAt.toLocaleString()}</div>
         <div className="right-corner">
           <FaEdit onClick={() => editNote(props.note)}></FaEdit>
           <FaTrash onClick={handleDelete}></FaTrash>
