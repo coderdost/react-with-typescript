@@ -102,6 +102,7 @@ function App() {
   return (
     <StateContext.Provider value={{ state, dispatch }}>
       <ThemeContext.Provider value={theme}>
+        <div className={`App ${theme}`}>
         <Switch
           onChange={changeHandler}
           checked={checked}
@@ -126,6 +127,7 @@ function App() {
         ></Switch>
         {/* here we want router */}
         <RouterProvider router={router} />
+        </div>
       </ThemeContext.Provider>
     </StateContext.Provider>
   );

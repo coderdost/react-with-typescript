@@ -9,13 +9,13 @@ export type NoteType = {
 }
 
 export enum ColorLight{
-     high='rgb(246, 100, 92)',
-     medium='rgb(244, 158, 127)',
-     low='rgb(248, 249, 175)'
+    high='#FFAEAE',
+    medium='#FFEC94',
+    low='#B0E57C'
 }
 
 export enum ColorDark{
-    high='rgb(143, 66, 61)',
-    medium='rgb(190, 131, 79)',
-    low='rgb(151, 151, 98)'
+    high='#D70000',
+    medium='#CC9933',
+    low='#77A600'
 }

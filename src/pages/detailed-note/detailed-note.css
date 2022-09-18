@@ -1,7 +1,9 @@
 .detailed-note{
-  margin: 0;
+  margin: auto;
+  max-width: 20rem;
   text-align: center;
   padding-top:1rem;
+  min-height: 100vh;
 }
 
 .detailed-note.light{

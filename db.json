@@ -8,13 +8,6 @@
       "updatedAt": "2022-09-17T16:21:15.119Z"
     },
     {
-      "text": "note 2 (updated now)",
-      "priority": "low",
-      "id": "7f77e872-f7f8-4617-ab9d-8f32a46780fb",
-      "createdAt": "2022-09-17T16:15:59.545Z",
-      "updatedAt": "2022-09-17T18:08:23.343Z"
-    },
-    {
       "text": "note 3 (updated)",
       "priority": "high",
       "id": "78486737-f03f-4da1-a40c-460149e7cf87",
@@ -22,25 +15,18 @@
       "updatedAt": "2022-09-17T16:18:04.640Z"
     },
     {
-      "text": "asdasdsad\nAsadasds\nasdasdasdad",
-      "priority": "low",
-      "id": "52ceb228-fc3b-440e-b849-31351a188498",
-      "createdAt": "2022-09-17T19:00:58.267Z",
-      "updatedAt": "2022-09-17T19:00:58.267Z"
+      "text": "medium note",
+      "priority": "medium",
+      "id": "882bbdfa-0beb-4fde-8c7b-72b52327a5fb",
+      "createdAt": "2022-09-18T16:31:15.376Z",
+      "updatedAt": "2022-09-18T16:31:15.376Z"
     },
     {
-      "text": "line 1\nline 2\nline 3\nline 4\n",
+      "text": "a note with \nlong \nlong\nlong\ndata\nasdasd\nasd\nasd\nsad\nasd\nsad\nsa\nd\nas\nd\nas\ndas\nd\ndas\na\nda\ndas\ndsa\ndasda\nd\nasd",
       "priority": "low",
-      "id": "a1ad66bb-7f36-48f2-b6b0-e21dfadd5d63",
-      "createdAt": "2022-09-17T19:01:13.245Z",
-      "updatedAt": "2022-09-17T19:01:13.245Z"
-    },
-    {
-      "text": "sdasdadasd asdasd sad asda. asd as das d asd as das d das d sa dd asd das dd\n a sd sa d asdsad \n  sad sadas d asd sad\n a sd sa das d asdsa\n\n\nasdsdasdasd",
-      "priority": "low",
-      "id": "32a0c88d-45cc-4997-bc03-9c5dd31093aa",
-      "createdAt": "2022-09-17T19:02:48.509Z",
-      "updatedAt": "2022-09-17T19:02:48.509Z"
+      "id": "2503cd96-fb40-4750-8b4f-8791b4d329c6",
+      "createdAt": "2022-09-18T16:32:22.138Z",
+      "updatedAt": "2022-09-18T16:32:22.138Z"
     }
   ]
 }

@@ -8,7 +8,7 @@ import { ThemeContext } from '../../context/theme/theme';
 import { StateContext } from '../../context/state/state';
 import { DELETE_NOTE, SET_EDIT_MODE, SET_NOTE_FOR_EDIT } from '../../actions';
 import { deleteNote } from '../../services/notes-service';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 type NoteProps = {
   id: string;
@@ -18,7 +18,7 @@ type NoteProps = {
   updatedAt: Date;
   note: NoteType;
   isDetailed?: boolean;
-  height?:string;
+  height?: string;
 };
 
 function Note(props: NoteProps) {
@@ -34,8 +34,8 @@ function Note(props: NoteProps) {
     console.log(await deleteNote(props.id));
     dispatch({ type: DELETE_NOTE, payload: props.id });
   };
-  
-  const optionalProps  = props.height ? {height:props.height}:{}
+
+  const optionalProps = props.height ? { height: props.height } : {};
   return (
     <Card
       bgColor={
@@ -46,17 +46,35 @@ function Note(props: NoteProps) {
       padding="1"
       {...optionalProps}
     >
-      <> 
-      <Link to={props.id} style={{textDecoration:'none',
-     color:`${theme === 'dark'? 'white':'black'}`}}>
-           <div className={props.isDetailed?'text':'text text-hide'}>{props.text}</div>
-      </Link>
+      <>
+        {props.isDetailed ? (
+          <div className={props.isDetailed ? 'text' : 'text text-hide'}>
+            {props.text}
+          </div>
+        ) : (
+          <Link
+            to={props.id}
+            style={{
+              textDecoration: 'none',
+              color: `${theme === 'dark' ? 'white' : 'black'}`,
+            }}
+          >
+            <div className={props.isDetailed ? 'text' : 'text text-hide'}>
+              {props.text}
+            </div>
+          </Link>
+        )}
 
-        <div className='left-corner date'>{props.updatedAt.toLocaleString()}</div>
-        <div className="right-corner">
+        <div className="left-corner date">
+          {props.updatedAt.toLocaleString()}
+        </div>
+        {
+          props.isDetailed ? null: <div className="right-corner">
           <FaEdit onClick={() => editNote(props.note)}></FaEdit>
           <FaTrash onClick={handleDelete}></FaTrash>
         </div>
+        }
+       
       </>
     </Card>
   );
