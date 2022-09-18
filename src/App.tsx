@@ -33,8 +33,15 @@ const router = createBrowserRouter([
   },
 ]);
 function App() {
-  const [theme, setTheme] = useState('light');
-  const [checked, setChecked] = useState(false);
+  let defaultTheme;
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    defaultTheme = 'dark'
+  } else {
+    defaultTheme = 'light'
+  }
+   
+  const [theme, setTheme] = useState(defaultTheme);
+  const [checked, setChecked] = useState(defaultTheme==='dark');
 
   const [state, dispatch] = useReducer(
     (state: StateType, action: { type: string; payload: any }) => {
@@ -69,14 +76,19 @@ function App() {
     { notes: [], editMode: false, noteToBeEdited: null }
   );
 
-  const changeHandler = (check: boolean) => {
-    setChecked(!checked);
+  const checkForTheme =(check:boolean)=>{
     if (check) {
       setTheme('dark');
     } else {
       setTheme('light');
     }
+  }
+  const changeHandler = (check: boolean) => {
+    setChecked(!checked);
+    checkForTheme(check);
   };
+ 
+  
 
   useEffect(() => {
     async function initializeNotes() {
@@ -84,6 +96,7 @@ function App() {
       dispatch({ type: INIT_NOTES, payload: notes });
     }
     initializeNotes();
+    checkForTheme(checked);
   }, []);
 
   return (
