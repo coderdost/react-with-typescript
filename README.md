@@ -17,9 +17,10 @@ video 7 - git checkout afe4dd0e1d65162164ef01d690981b334a29d612
 video 8 - git checkout 6c76e74c09013d53c3a05e79d2043775ab875121
 video 9 - git checkout a744da986c51bf17717ee742e64c104dac1804bc
 video 10 - git checkout 5e728f4380e0e7475412a64da90e3991f58d05f9
+```
 
 For 10th Video we have a Node JS repo also for deployment:
-https://github.com/coderdost/node-express-mongoose-rest-API
+[Node Express API code](https://github.com/coderdost/node-express-mongoose-rest-API)
 
 
 ## Getting Started with Create React App
